@@ -1,9 +1,15 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>lab2总结 | Hexo</title>
 
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+  
+  <meta name="author" content="John Doe">
+  
 
+  
   <meta name="description" content="简单的 Raft 流程：
 Leader 收到 client 发送的 request。
 
@@ -12,40 +18,75 @@ Leader 将 request append 到自己的 log。
 Leader 将对应的 log entry 发送给其他的 follower。
 
 Leader 等待 follower 的结果，如果大多数节点提">
+  
+
+  
+  
+  <meta name="keywords" content="raft">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="lab2总结"/>
+
+  <meta property="og:site_name" content="Hexo"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+<meta name="generator" content="Hexo 6.3.0"></head>
 
 
-<link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-<meta name="theme-color" content="#a1d0f6">
-<title>lab2总结 - Hexo</title>
-<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-<link rel="shortcut icon" href="/favicon.png">
+<body>
+<div class="blog">
+  <div class="content">
 
-<link rel="stylesheet" href="/css/style.css">
-
-<nav class="main-nav">
-	
-	    <a href="/">← Home</a>
-	
-	
-	    <a href="/about/">About</a>
-	
-	    <a href="/archives/">Archives</a>
-	
-	<a class="cta" href="/atom.xml" data-no-instant>Subscribe</a>
-</nav>
-
-<section id="wrapper">
-    <article class="post">
     <header>
-        
-            <h1>lab2总结</h1>
-        
-        <h2 class="headline">Feb 21 2023
-        
-        </h2>
-    </header>
-</article>
-<section id="post-body"><h2 id="简单的-Raft-流程："><a href="#简单的-Raft-流程：" class="headerlink" title="简单的 Raft 流程："></a>简单的 Raft 流程：</h2><ol>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Hexo</a>
+    </h1>
+    <p class="site-description"></p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>lab2总结</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2023/02/21/6.824/lab2总结/" rel="bookmark">
+        <time class="entry-date published" datetime="2023-02-21T11:34:57.000Z">
+          2023-02-21
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="简单的-Raft-流程："><a href="#简单的-Raft-流程：" class="headerlink" title="简单的 Raft 流程："></a>简单的 Raft 流程：</h2><ol>
 <li><p>Leader 收到 client 发送的 request。</p>
 </li>
 <li><p>Leader 将 request append 到自己的 log。</p>
@@ -59,9 +100,9 @@ Leader 等待 follower 的结果，如果大多数节点提">
 <li><p>Leader 继续处理下一次 request。</p>
 </li>
 </ol>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/b3BMqYgyxNXAlwZL/img/c6d14dc1-8967-4228-8677-fe3c92c43871.png" alt="image"></p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/b3BMqYgyxNXAlwZL/img/704c8ef9-bafd-409e-9669-af60e68e9df5.png" alt="image"></p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/b3BMqYgyxNXAlwZL/img/1c08af8f-700b-4595-a5ac-03b0be35eeb4.png" alt="image"></p>
+<p><img src="https://cdn.staticaly.com/gh/KatoTohka/pic1@main/202302211945520.png" alt="image"></p>
+<p><img src="https://cdn.staticaly.com/gh/KatoTohka/pic1@main/202302211946306.png" alt="image"></p>
+<p><img src="https://cdn.staticaly.com/gh/KatoTohka/pic1@main/202302211946875.png" alt="image"></p>
 <p>从分层的角度看，整个系统包括：client 层，service 状态机层， raft 层，persister 持久化层</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 原有，返回是否是leader和其任期</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> GetState() (<span class="type">int</span>, <span class="type">bool</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 原有，持久化状态</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> persist()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> encodeState() []<span class="type">byte</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 原有,回复先前的持久化状态</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> readPersist(data []<span class="type">byte</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment">// 原有，服务端希望切换到快照</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> CondInstallSnapshot(lastIncludedTerm <span class="type">int</span>, lastIncludedIndex <span class="type">int</span>, snapshot []<span class="type">byte</span>) <span class="type">bool</span> </span><br><span class="line"></span><br><span class="line"><span class="comment">// 原有，服务端触发的日志压缩，删除掉已经被压缩的log</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> Snapshot(index <span class="type">int</span>, snapshot []<span class="type">byte</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// leader发送的，如果无误则 follower 只能无条件接受。</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> InstallSnapshot(args *InstallSnapshotArgs, reply *InstallSnapshotReply)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> genInstallSnapshotArgs() *InstallSnapshotArgs</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> handleInstallSnapshotReply(peer <span class="type">int</span>, args *InstallSnapshotArgs, reply *InstallSnapshotReply) </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> sendInstallSnapshot(server <span class="type">int</span>, args *InstallSnapshotArgs, reply *InstallSnapshotReply) <span class="type">bool</span> </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> startElection()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> genRequestVoteArgs() *RequestVoteArgs</span><br><span class="line"></span><br><span class="line"><span class="comment">// 请求投票服务</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> RequestVote(args *RequestVoteArgs, reply *RequestVoteReply)</span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> handleRequestVoteReply(peer <span class="type">int</span>, args *RequestVoteArgs, reply *RequestVoteReply)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 调用RequestVote服务，RPC</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> sendRequestVote(server <span class="type">int</span>, args *RequestVoteArgs, reply *RequestVoteReply) <span class="type">bool</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> broadcastHeartbeat(isHeartbeat <span class="type">bool</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> doReplicate(peer <span class="type">int</span>) </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> genAppendEntriesArgs(prevLogIndex <span class="type">int</span>) *AppendEntriesArgs</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> handleAppendEntriesReply(peer <span class="type">int</span>, args *AppendEntriesArgs, reply *AppendEntriesReply)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> sendAppendEntries(server <span class="type">int</span>, args *AppendEntriesArgs, reply *AppendEntriesReply) <span class="type">bool</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> followerCommit(leaderCommit <span class="type">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> leaderCommit() </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> getFirstLog() Entry</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> getLastLog() Entry</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> changeState(state State)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> reInitFollowTimer()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> reInitLeaderState()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 原有，应用层接口，获取command，返回index，term和成功与否</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> Start(command <span class="keyword">interface</span>&#123;&#125;) (<span class="type">int</span>, <span class="type">int</span>, <span class="type">bool</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 原有</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> Kill()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 原有</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> killed() <span class="type">bool</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> applier()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 原有，定时器两个chan，等待heartbeatTimer和electionTimer过期</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> ticker()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> replicator(peer <span class="type">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> needReplicating(peer <span class="type">int</span>) <span class="type">bool</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 原有，用来启动raft服务</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Make</span><span class="params">(peers []*labrpc.ClientEnd, me <span class="type">int</span>, persister *Persister, applyCh <span class="keyword">chan</span> ApplyMsg)</span></span> *Raft</span><br></pre></td></tr></table></figure>
 
@@ -198,7 +239,7 @@ Leader 等待 follower 的结果，如果大多数节点提">
 <p>考虑到异步 apply 时最耗时的步骤是 apply channel 和 apply 日志到状态机，其他的都不怎么耗费时间。因此我们完全<strong>可以只用一个 applier 协程，让其不断的把 [lastApplied + 1, commitIndex] 区间的日志 push 到 applyCh 中去</strong>。这样既可保证每一条日志只会被 exactly once 地 push 到 applyCh 中，也可以使得日志 apply 到状态机和 raft 提交新日志可以真正的并行。这是一个较为优雅的异步 apply 实现。</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">go</span> rf.applier()</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> applier() &#123;</span><br><span class="line">   <span class="keyword">for</span> !rf.killed() &#123;</span><br><span class="line">      rf.mu.Lock()</span><br><span class="line">      <span class="keyword">for</span> rf.lastApplied &gt;= rf.commitIndex &#123;</span><br><span class="line">         rf.applyCond.Wait()</span><br><span class="line">      &#125;</span><br><span class="line">      lastApplied := rf.lastApplied</span><br><span class="line">      firstLogIndex := rf.getFirstLog().Index</span><br><span class="line">      commitIndex := rf.commitIndex</span><br><span class="line">      applyEntries := <span class="built_in">make</span>([]Entry, commitIndex-lastApplied)</span><br><span class="line">      <span class="built_in">copy</span>(applyEntries, rf.logs[lastApplied-firstLogIndex+<span class="number">1</span>:commitIndex-firstLogIndex+<span class="number">1</span>])</span><br><span class="line">      rf.mu.Unlock()</span><br><span class="line">      <span class="keyword">for</span> _, entry := <span class="keyword">range</span> applyEntries &#123;</span><br><span class="line">         applyMsg := ApplyMsg&#123;</span><br><span class="line">            CommandValid: <span class="literal">true</span>,</span><br><span class="line">            Command:      entry.Command,</span><br><span class="line">            CommandIndex: entry.Index,</span><br><span class="line">         &#125;</span><br><span class="line">         rf.applyCh &lt;- applyMsg</span><br><span class="line">      &#125;</span><br><span class="line">      rf.mu.Lock()</span><br><span class="line">      rf.lastApplied = Max(rf.lastApplied, commitIndex)</span><br><span class="line">      rf.mu.Unlock()</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> followerCommit(leaderCommit <span class="type">int</span>) &#123;</span><br><span class="line">   <span class="keyword">if</span> leaderCommit &gt; rf.commitIndex &#123;</span><br><span class="line">      rf.commitIndex = Min(leaderCommit, rf.getLastLog().Index)</span><br><span class="line">      rf.applyCond.Signal()</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(rf *Raft)</span></span> leaderCommit() &#123;</span><br><span class="line">   <span class="comment">//注意：是根据matchIndex，判断出那些log已经被大多数peer记录了</span></span><br><span class="line">   n := <span class="built_in">len</span>(rf.matchIndex)</span><br><span class="line">   tmp := <span class="built_in">make</span>([]<span class="type">int</span>, n)</span><br><span class="line">   <span class="built_in">copy</span>(tmp, rf.matchIndex)</span><br><span class="line">   <span class="comment">//降序排序</span></span><br><span class="line">   sort.Sort(sort.Reverse(sort.IntSlice(tmp)))</span><br><span class="line">   <span class="comment">//找到新的commitIndex</span></span><br><span class="line">   newCommitIndex := tmp[n/<span class="number">2</span>]</span><br><span class="line">   <span class="keyword">if</span> newCommitIndex &gt; rf.commitIndex &#123;</span><br><span class="line">      <span class="comment">// leader只能提交当前任期下的日志</span></span><br><span class="line">      <span class="keyword">if</span> newCommitIndex &lt;= rf.getLastLog().Index &amp;&amp; rf.currentTerm == rf.logs[newCommitIndex-rf.getFirstLog().Index].Term &#123;</span><br><span class="line">         DPrintf(<span class="string">&quot;[Node %d] advance commitIndex from %d to %d with matchIndex %v in term %d&quot;</span>,</span><br><span class="line">            rf.me, rf.commitIndex, newCommitIndex, rf.matchIndex, rf.currentTerm)</span><br><span class="line">         rf.commitIndex = newCommitIndex</span><br><span class="line">         rf.applyCond.Signal()</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         DPrintf(<span class="string">&quot;[Node %d] can not advance commitIndex from %d because the term of newCommitIndex %d is not equal to currentTerm %d&quot;</span>,</span><br><span class="line">            rf.me, rf.commitIndex, newCommitIndex, rf.currentTerm)</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="figure8"><a href="#figure8" class="headerlink" title="figure8"></a><strong>figure8</strong></h2><p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/b3BMqYgyxNXAlwZL/img/268c43cd-1e5d-42e8-9fdc-aa91467743e5.png" alt="img">..</p>
+<h2 id="figure8"><a href="#figure8" class="headerlink" title="figure8"></a><strong>figure8</strong></h2><p><img src="https://cdn.staticaly.com/gh/KatoTohka/pic1@main/202302211946986.png" alt="img">..</p>
 <p>Figure 8 用来说明为什么 Leader 不能提交之前任期的日志，只能通过提交自己任期的日志，从而间接提交之前任期的日志。</p>
 <p>先按错误的情况，也就是 Leader 可以提交之前任期的日志。那么上述的流程：</p>
 <ul>
@@ -209,7 +250,8 @@ Leader 等待 follower 的结果，如果大多数节点提">
 <li>(e) 这里的情况是，S1 在宕机之前将自己 term&#x3D;4 的日志复制到了大多数机器上，这样 S5 就不可能选举成功。这是 S1 不发生故障，正确复制的情况。</li>
 </ul>
 <p>这里主要通过 (c) 和 (d) 来说明问题所在。其实这张图用 Raft 大论文的图会比较好理解。(d) 和 (e) 分别对应 term&#x3D;4 有没有复制到多数派的情况。</p>
-<p><img src="https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/b3BMqYgyxNXAlwZL/img/751f9395-f7a4-48b1-a907-b974a19c537c.png" alt="img"></p>
+<img src="https://cdn.staticaly.com/gh/KatoTohka/pic1@main/202302211946210.png" alt="img" style="zoom:50%;" />
+
 <p>所以，<strong>我们要增加提交的约束，不让 (d) 这种情况发生。</strong>这个约束就是，Leader 只能提交自己任期的日志。</p>
 <p>我们再来看看，加了约束后会变成什么样？前面 (a) 和 (b) 没有任何改变，我们从 (c) 开始。</p>
 <p>(c) 还是将 index&#x3D;2 &amp; term&#x3D;2 复制到大多数，<strong>由于 currentTerm &#x3D; 4，所以不能提交这条日志。如果 S1 将 term &#x3D; 4 的日志复制到多数派，那么 Leader 就可以提交日志，index&#x3D;2 &amp; term&#x3D;2 也会间接一起提交，其实这就是 (e) 的情况，1-2-4 都被提交</strong>。</p>
@@ -221,80 +263,59 @@ Leader 等待 follower 的结果，如果大多数节点提">
 <p>具体流程是在 Leader 刚选举成功的时候，立即追加一条 no-op 日志，并立即复制到其它节点，no-op 日志一经提交，Leader 前面那些未提交的日志全部间接提交，问题就解决了。像上面的 kv 数据库，有了 no-op 日志之后，Leader 就能快速响应客户端查询了。</p>
 <p>本质上，no-op 日志使 Leader 隐式地快速提交之前任期未提交的日志，确认当前 commitIndex，这样系统才会快速对外正常工作。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>TXY的github</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/jzx05Q781ytMXrZ2wrm2Vg">Raft 的 Figure 8 讲了什么问题？为什么需要 no-op 日志？ (qq.com)</a></p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/425615927">MIT6.824_2021_lab2D_log_compaction - 知乎 (zhihu.com)</a></p>
-</section>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
     
-        
-        <h2 class="footline">
-            <a href="/tags/raft/#raft">raft</a>
-        </h2>
+
+    
     
 
-    <footer id="post-meta" class="clearfix">
-        <a href="/about/">
-        <img class="avatar" src="/images/avatar.jpg">
-        <div>
-            <span class="dark">Hexo</span>
-            <span></span>
-        </div>
-        </a>
-        <section id="sharing">
-            <a title="Share to Twitter" class="twitter" target="_blank" rel="noopener" href="https://twitter.com/intent/tweet?text=http://example.com/2023/02/21/6.824/lab2%E6%80%BB%E7%BB%93/ - lab2总结 @"><span class="icon-twitter">tweet</span></a>
-            <a title="Share to Facebook" class="facebook" href="#" onclick="
-                window.open(
-                  'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href),
-                  'facebook-share-dialog',
-                  'width=626,height=436');
-                return false;"><span class="icon-facebook-sign">Share</span>
-            </a>
-        </section>
-    </footer>
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/raft/">raft</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+  
 
 
-  <section id="comment">
-    <button class="btn" id="loadcmts" onclick="cmts.load();">Load Comments</button>
-    <div id="gitment"></div>
-    <script src='/js/gitment.browser.js'></script>
-    <link rel="stylesheet" href=''>
-    <script>
-      var cmts={
-        load:function cmts(){
-          var gitment = new Gitment({
-          
-            id: "lab2总结",
-          
-            owner: "",
-            repo: "",
-            oauth: {
-              client_id: "",
-              client_secret: "",
-            },
-          })
-          gitment.render('gitment');
-          var loadcmt = document.getElementById("loadcmts");
-          var imyourfather = loadcmt.parentNode;
-          imyourfather.removeChild(loadcmts)
-        }
-      }
-    </script>
-  </section>
 
 
-	<footer id="footer">
-	<div id="social">
-		<p class="small">©  John Doe| Powered by Hexo & 
-			<a target="_blank" rel="noopener" href="https://github.com/F0r3at/Lights"> Lights</a>
-		</p>
-	</div>
+
+
+
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2023 John Doe
+    
+  </p>
 </footer>
-
-</section>
-
-	<script src="//cdnjs.loli.net/ajax/libs/instantclick/3.0.1/instantclick.min.js" data-no-instant></script>
-	<script data-no-instant>
-		
-		InstantClick.init('mousedown');
-	</script>
-
-
-
+    
+    
+  </div>
+</div>
+</body>
+</html>
